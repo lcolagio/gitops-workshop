@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lcolagio-sample-app
+  namespace: lcolagio-sample-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lcolagio-sample-app
+  template:
+    metadata:
+      labels:
+        app: lcolagio-sample-app
+    spec:
+      containers:
+        - name: lcolagio-sample-app
+          image: "quay.io/btomlins/greet:v0.0.1"
+          command:
+            - '/usr/bin/greet'
+          args:
+            - 'Hello participant\!'
+...
